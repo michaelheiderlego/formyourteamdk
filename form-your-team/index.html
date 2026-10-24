@@ -61,7 +61,7 @@
   --c5: #279A76; --c5-soft: #DDF2EA; --c5-ink: #16694F;
   --c6: #6C9724; --c6-soft: #EAF2DB; --c6-ink: #476811;
 
-  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Schibsted Grotesk", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
@@ -1928,6 +1928,11 @@ html.intro-open body { overflow: hidden; }
   opacity: 0; transform: translateY(14px); filter: blur(6px); transition: opacity 500ms cubic-bezier(0.23, 1, 0.32, 1), transform 600ms cubic-bezier(0.23, 1, 0.32, 1), filter 500ms ease-out; }
 .intro.phase-0 .intro-short { opacity: 1; transform: none; filter: blur(0); }
 @media (prefers-reduced-motion: reduce) { .intro-short { transform: none; filter: none; transition: opacity 200ms ease; } }
+
+/* Schibsted Grotesk: calmer weights, gentler tracking than the old display face */
+.hero-title, .section-title, .hub-title, .convos-title, .about-name, .wb-title, .wb-opener-title, .ho-title, .intro-deserve, .intro-big, .mf-name { font-weight: 650; letter-spacing: -.02em; font-variation-settings: normal; }
+.hero-title, .intro-deserve, .wb-title { letter-spacing: -.03em; }
+.field-lead > .field-label, .team-name, .journey-short, .facts h3, .framing, .exercise-title, .manual-title, .cluster-name, .ritual-name, .rule-word, .zone-title, .sub-title, .kct-title, .review-title, .cv-title, .modal-title, .hub-q, .mech-group-title, .mech-name, .about-tagline, .about-offer, .canvas-output-title, .exercises-title, .rloop-label, .decide-sentence, .wb-h2, .wb-framing, .workbook-cta h3, .offerings-title, .offer-name, .wb-toc-grid strong, .wb-excards strong, .ho-story-text, .ho-sentence { font-weight: 600; letter-spacing: -.01em; font-variation-settings: normal; }
 
 </style>
 
