@@ -1,0 +1,37 @@
+FORM YOUR TEAM · EMAIL TEMPLATES
+
+=== THE INVITATION ===
+
+Subject: Two hours on how we work together
+
+Hi everyone,
+
+We've been busy delivering, and we've never really talked about how we want to work together. I'd like us to spend [two hours] on that, on [date] in [room / link].
+
+We'll start with one question: [e.g. Why are we here, as a team?]
+By the end, we'll have [e.g. a first version of our purpose, in our own words].
+
+No preparation needed, just come curious. If you like, watch this two-minute intro first: formyourteam.dk
+
+[Your name]
+
+
+=== THE FOLLOW-UP ===
+
+Subject: What we agreed on [date]
+
+Hi everyone,
+
+Thank you for [the session on …]. Here's what we agreed, so we can all find it:
+
+What we agreed
+· [agreement]
+· [agreement]
+
+Next steps
+· [who] will [what] by [when]
+
+The canvas is here: [link or where it hangs]
+We'll look at it again on [date].
+
+[Your name]
