@@ -2436,6 +2436,21 @@ html.is-posters body:has(.illos) { background: transparent; }
 
 </style>
 
+<script defer src="https://cloud.umami.is/script.js" data-website-id="4eb5e541-a1b3-42ee-b086-a4857eaf6302"></script>
+<script>
+// Umami events: buy clicks, downloads, Miro, and video plays
+(function(){
+  function t(n,d){try{window.umami&&window.umami.track(n,d)}catch(e){}}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
+    if(/lemonsqueezy\.com/.test(h))t('buy-course-click',{place:location.pathname+location.search});
+    else if(/\.pdf($|\?)/i.test(h)||/\.txt($|\?)/i.test(h))t('download',{file:h.split('/').pop()});
+    else if(/miro\.com/.test(h))t('miro-template-click');
+    else if(/^mailto:/.test(h))t('email-click');
+  },true);
+  document.addEventListener('play',function(e){var v=e.target;if(!v||v.tagName!=='VIDEO'||v.__umami)return;v.__umami=1;t('video-play',{video:(v.currentSrc||v.src||'').split('/').pop(),page:location.pathname+location.search});},true);
+})();
+</script>
 </head>
 <body>
 <script>window.__TRC_SITE__=true;window.__TRC_LIBS__={html2canvas:"assets/js/html2canvas.min.js",jspdf:"assets/js/jspdf.umd.min.js"};</script>
