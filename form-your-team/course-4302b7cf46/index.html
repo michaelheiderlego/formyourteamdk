@@ -205,49 +205,6 @@ details.notes .tx p{margin:0}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
-/* calmer, editorial look */
-.welcome{display:grid;grid-template-columns:88px 1fr;gap:28px;align-items:start;padding:12px 0 36px;border-bottom:1px solid var(--line)}
-.welcome .face{width:88px;height:88px;border-radius:50%;object-fit:cover}
-.welcome h1{font-size:clamp(30px,4vw,44px);letter-spacing:-.03em;line-height:1.05;margin:0 0 16px;max-width:16em}
-.welcome .lede{font-size:17.5px;line-height:1.65;color:var(--ink2);margin:0;max-width:36em}
-.welcome .sig{font:600 16px var(--display);margin:12px 0 0}
-.welcome .hero-actions{margin-top:22px}
-.welcome .note{font-size:14px;color:var(--ink3)}
-.h-sec{margin-top:44px}
-.sec-title{font-size:24px}
-.mlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
-.mlist a{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;padding:14px 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
-.mlist .ft{font:700 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);border:1.5px solid var(--line2);border-radius:6px;padding:6px 0;text-align:center}
-.mlist .mt{display:grid;gap:2px}
-.mlist .mt b{font:650 16px var(--display);letter-spacing:-.01em}
-.mlist .mt span{font-size:14.5px;color:var(--ink2);line-height:1.45}
-.mlist .mg{font-size:14px;font-weight:600;color:var(--ink2);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line2)}
-.mlist a:hover .mg{color:var(--ink);text-decoration-color:var(--ink)}
-.mlist a:hover b{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-.toc{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
-.toc button{display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:16px 2px;color:var(--ink)}
-.toc-n{font:700 20px var(--display);color:var(--mc)}
-.toc-t{display:grid;gap:3px}
-.toc-t b{font:650 17.5px var(--display);letter-spacing:-.01em}
-.toc-t span{font-size:14.5px;color:var(--ink2);line-height:1.45}
-.toc button:hover .toc-t b{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-.toc-p{display:grid;justify-items:end;gap:6px;font-size:13px;color:var(--ink3);white-space:nowrap}
-.dots{display:flex;gap:4px}
-.dots i{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--line2)}
-.dots i.on{background:var(--mc);border-color:var(--mc)}
-.mod-n{background:none!important;color:var(--mc,var(--ink))!important;width:auto;min-width:18px;font-size:14px}
-/* lesson page: fewer boxes */
-.box{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:18px 0 4px}
-.l-grid{gap:28px}
-.try{background:var(--accent-soft,var(--s1));border-top:0;border-left:4px solid var(--accent,var(--ink));border-radius:0 12px 12px 0;padding:16px 20px}
-.chip{background:none!important;padding:0;font-weight:600;color:var(--ink3)!important;letter-spacing:0;font-size:14px}
-.player{border-radius:12px}
-.dl{gap:6px 22px}
-.dl a{border:0;padding:4px 0;border-radius:0;background:none;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line2);color:var(--ink)}
-.dl a:hover{text-decoration-color:var(--ink)}
-.glance-card{border-radius:10px}
-.ask{border-style:solid;border-width:1px 0 0;border-radius:0;padding:18px 0 4px}
-@media (max-width:640px){.welcome{grid-template-columns:1fr;gap:16px}.welcome .face{width:64px;height:64px}.toc button{grid-template-columns:30px 1fr}.toc-p{display:none}.mlist a{grid-template-columns:44px 1fr}.mlist .mg{display:none}}
 </style>
 </head>
 <body>
@@ -734,7 +691,7 @@ function renderSide(cur){
     <ul class="mods">${C.modules.map(m=>{
       const open=P.open[m.id]??(cur?cur.mod===m:m.n===0);
       return `<li class="mod${open?' open':''}">
-        <button class="mod-btn" data-mod="${m.id}" aria-expanded="${open}"><span class="mod-n" style="--mc:${accent(m)}">${m.n}</span><span>${esc(m.title)}</span>${chev}</button>
+        <button class="mod-btn" data-mod="${m.id}" aria-expanded="${open}"><span class="mod-n" style="background:${accent(m)}">${m.n}</span><span>${esc(m.title)}</span>${chev}</button>
         <ul class="lessons">${m.lessons.map(l=>`<li><button class="les${P.done[l.id]?' done':''}" data-go="${l.id}"${cur===l?' aria-current="page"':''}><span class="chk" aria-hidden="true"></span><span>${esc(l.title)}<span class="sr">${P.done[l.id]?' (done)':''}</span></span><span class="min">${l.dur||l.min+' min'}</span></button></li>`).join('')}</ul>
       </li>`}).join('')}</ul>`;
 }
@@ -749,34 +706,35 @@ function renderHome(){
   const next=ALL.find(l=>!P.done[l.id])||ALL[0];
   const started=doneCount()>0;
   const keys=['why','who','rhythm','decide','agree','evolve'];
-  const MATS=[['guide','Facilitator guide','All six session plans, what to say, and answers for the tricky moments.','PDF'],['templates','Template pack','Invitation and follow-up emails, decision log, check-in cards and more.','PDF'],['canvases','Canvases','An illustrated overview plus a sheet for each exercise, to print big.','PDF'],['workbook','Workbook','All six conversations with the steps, worksheets and a blank canvas.','PDF'],['miro','Miro template','The canvases on one shared board, for remote teams.','Miro']];
-  view.innerHTML=`<header class="welcome">
-      ${window.PHOTO?`<img class="face" src="${window.PHOTO}" alt="Michael Heider" width="88" height="88">`:''}
+  view.innerHTML=`<section class="hero">
       <div>
+        <span class="eyebrow">Form Your Team · Facilitation course</span>
         <h1>Run the six conversations with your own team</h1>
-        <p class="lede">This course is what I’d tell a team lead before their first session: how to prepare, what to say, what to do when it gets awkward, and how to follow through. Watch a lesson, try one small thing with your team, and come back for the next.</p>
-        <p class="sig">— Michael</p>
+        <p>Short video lessons on how to prepare, facilitate and follow through, so the conversations feel natural and lead to agreements your team keeps using.</p>
         <div class="hero-actions">
-          <button class="btn btn-dark" data-go="${next.id}">${started?'Continue':'Start with lesson 1'} ${arrow}</button>
-          <span class="note">${started?`Next up: ${esc(next.title)}`:`${ALL.length} short lessons · ${TOTAL_MIN} minutes of video · 6 session plans`}</span>
+          <button class="btn btn-primary" data-go="${next.id}">${started?'Continue':'Start the course'} ${arrow}</button>
+          <span class="note">${started?`Next: ${esc(next.title)}`:`Begins with: ${esc(ALL[0].title)}`}</span>
         </div>
       </div>
-    </header>
-    <section class="h-sec">
-      <h2 class="sec-title">Your materials</h2>
-      <p class="sec-intro">Print them, or keep them open next to the lessons.</p>
-      <ul class="mlist">${MATS.map(([k,t,d,ft])=>{const [lab,f]=DL[k];const href=/^(http|files\/)/.test(f)?f:SITE+f;return `<li><a href="${href}" target="_blank" rel="noopener"><span class="ft">${ft}</span><span class="mt"><b>${t}</b><span>${d}</span></span><span class="mg">${ft==='Miro'?'Open':'Download'}</span></a></li>`}).join('')}</ul>
+      <div class="hero-art" aria-hidden="true">${keys.map((k,i)=>`<span style="background:var(--s${i+1})">${ILLO[k]?`<img src="${ILLO[k]}" alt="">`:''}</span>`).join('')}</div>
     </section>
-    <section class="h-sec">
-      <h2 class="sec-title">The course</h2>
-      <p class="sec-intro">Go in order, or jump to the conversation you’re running next.</p>
-      <ol class="toc">${C.modules.map(m=>{const d=modDone(m);const n=m.lessons.length;
-        return `<li><button data-go="${(m.lessons.find(l=>!P.done[l.id])||m.lessons[0]).id}" style="--mc:${accent(m)}">
-          <span class="toc-n">${m.n}</span>
-          <span class="toc-t"><b>${esc(m.title)}</b><span>${esc(m.intro)}</span></span>
-          <span class="toc-p"><span class="dots">${m.lessons.map(l=>`<i class="${P.done[l.id]?'on':''}"></i>`).join('')}</span>${d?`${d} of ${n} done`:`${n} lessons · ${Math.round(m.lessons.reduce((a,l)=>a+l.min,0))} min`}</span>
-        </button></li>`}).join('')}</ol>
-    </section>
+    <div class="stats">
+      <div class="stat"><b>${ALL.length}</b><span>short lessons</span></div>
+      <div class="stat"><b>${TOTAL_MIN} min</b><span>of video</span></div>
+      <div class="stat"><b>6</b><span>session plans</span></div>
+    </div>
+    <h2 class="sec-title">Your materials</h2>
+    <p class="sec-intro">Print them, or open them next to the lessons.</p>
+    <div class="mats">${[['guide','Facilitator guide','All six session plans, what to say, and answers for the tricky moments. Print it.',3],['templates','Template pack','Invitation and follow-up emails, decision log, check-in cards and more.',1],['canvases','Canvases','An illustrated overview plus a sheet for each exercise, to print big.',0],['workbook','Workbook','All six conversations with the steps, worksheets for everyone and a blank canvas.',2],['miro','Miro template','The canvases on one shared board for remote teams.',4]].map(([k,t,d,i])=>{const [lab,f]=DL[k];const href=/^(http|files\/)/.test(f)?f:SITE+f;return `<a class="mat" href="${href}" target="_blank" rel="noopener" style="--mc:${COLS[i]}"><span class="mat-ic">${dlIcon}</span><b>${t}</b><span>${d}</span></a>`}).join('')}</div>
+    <h2 class="sec-title" style="margin-top:36px">Modules</h2>
+    <p class="sec-intro">Go in order, or jump to the conversation you’re running next.</p>
+    <div class="cards">${C.modules.map(m=>{const ill=illFor(m);const d=modDone(m);const n=m.lessons.length;
+      return `<button class="card" data-go="${(m.lessons.find(l=>!P.done[l.id])||m.lessons[0]).id}">
+        <div class="card-top"><span class="ill" style="background:${soft(m)}">${ill?`<img src="${ill}" alt="">`:`<span class="mod-n" style="background:${accent(m)};width:34px;height:34px;font-size:15px">${m.n}</span>`}</span>
+        <div><span class="eyebrow" style="color:${dark(m)}">Module ${m.n}</span><h3>${esc(m.title)}</h3></div></div>
+        <p>${esc(m.intro)}</p>
+        <div class="card-meta"><span>${n} lessons · ${Math.round(m.lessons.reduce((a,l)=>a+l.min,0))} min</span><div class="bar" aria-hidden="true"><i style="width:${d/n*100}%;background:${accent(m)}"></i></div><span>${d}/${n}</span></div>
+      </button>`}).join('')}</div>
     ${ask()}
     <p class="foot">Your progress is saved in this browser. The narration uses an AI version of Michael’s own voice, made with ElevenLabs. Made by Michael Heider · <a href="${SITE}">formyourteam.dk</a></p>`;
 }
