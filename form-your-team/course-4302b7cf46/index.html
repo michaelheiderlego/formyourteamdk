@@ -59,9 +59,9 @@ img{max-width:100%;display:block}
 
 /* home */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;background:var(--ink);color:var(--paper);border-radius:28px;padding:44px 44px 40px;position:relative;overflow:hidden}
-.eyebrow{font:700 12.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.eyebrow{font:600 13px/1 var(--body);letter-spacing:0;color:var(--ink3)}
 .hero .eyebrow{color:#B6BACC}
-h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.08;margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.025em;line-height:1.08;margin:0}
 .hero h1{font-size:clamp(32px,4.4vw,48px);margin:12px 0 14px}
 .hero p{margin:0;color:#D5D8E4;font-size:17px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
@@ -85,7 +85,7 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.08;marg
 .sec-intro{color:var(--ink2);margin:0 0 20px}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .card{display:flex;flex-direction:column;gap:10px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;transition:border-color .2s,transform .2s}
-.card:hover{border-color:var(--line2);transform:translateY(-2px)}
+.card:hover{border-color:var(--line2)}
 .card-top{display:flex;align-items:center;gap:12px}
 .card-top .ill{width:60px;height:60px;border-radius:14px;display:grid;place-items:center;flex:none;padding:4px}
 .card-top .ill img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
@@ -146,7 +146,7 @@ details.notes .tx p{margin:0}
 .glance-card{margin:0;border-radius:16px;aspect-ratio:600/640;padding:6px;display:grid;place-items:center}
 .glance-card svg{width:100%;height:100%}
 .glance-card{cursor:zoom-in;transition:transform .2s,box-shadow .2s}
-.glance-card:hover,.glance-card:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(25,27,46,.45);outline:none}
+.glance-card:hover,.glance-card:focus-visible{box-shadow:0 10px 24px -14px rgba(25,27,46,.45);outline:none}
 .lb{position:fixed;inset:0;z-index:100;background:rgba(25,27,46,.82);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
 .lb.on{display:flex}
 .lb figure{margin:0;border-radius:24px;height:min(88vh,calc((100vw - 140px)*640/600));aspect-ratio:600/640;padding:2%;box-sizing:border-box;display:grid;place-items:center;cursor:default;box-shadow:0 30px 80px -30px rgba(0,0,0,.6)}
@@ -169,7 +169,7 @@ details.notes .tx p{margin:0}
 #view:focus{outline:none}
 .mats{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin-bottom:8px}
 .mat{display:grid;gap:6px;align-content:start;padding:18px;border-radius:18px;background:var(--surface);border:1px solid var(--line);text-decoration:none;transition:border-color .2s,transform .2s}
-.mat:hover{border-color:var(--mc);transform:translateY(-2px)}
+.mat:hover{border-color:var(--mc)}
 .mat-ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--mc);color:#fff}
 .mat b{font:700 17px var(--display);letter-spacing:-.01em}
 .mat span:last-child{font-size:14px;color:var(--ink2);line-height:1.45}
