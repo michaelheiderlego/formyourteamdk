@@ -205,6 +205,16 @@ details.notes .tx p{margin:0}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+.plan>summary{list-style:none;cursor:pointer}
+.plan>summary::-webkit-details-marker{display:none}
+.plan>summary span{display:inline-flex;align-items:center;gap:6px}
+.plan>summary .chev{transition:transform .2s}
+.plan[open]>summary .chev{transform:rotate(90deg)}
+.plan:not([open]) .plan-bar,.plan:not([open]) ol{display:none}
+.mats-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:18px 0 0;font-size:14.5px;color:var(--ink3)}
+.mats-line b{color:var(--ink);font-weight:600;margin-right:6px}
+.mats-line a{color:var(--ink2);text-underline-offset:3px}
+.mats-line a:hover{color:var(--ink)}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="4eb5e541-a1b3-42ee-b086-a4857eaf6302"></script>
 <script>
@@ -775,8 +785,8 @@ function renderLesson(l){
       <section class="box"><h2>Key takeaways</h2><ul>${l.takeaways.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></section>
       <section class="box try"><h2>Try this</h2><p>${esc(l.try)}</p></section>
     </div>
-    ${l.plan?`<section class="box plan"><div class="plan-head"><h2>${esc(l.plan.title)}</h2><span>${l.plan.total} min · what you can say in italics</span></div><div class="plan-bar" aria-hidden="true">${l.plan.rows.map(([mn],i)=>`<i style="flex:${mn};background:${COLS[i%6]}"></i>`).join('')}</div><ol>${(()=>{let t=0;return l.plan.rows.map(([mn,w,q])=>{const s=t;t+=mn;return `<li><span class="t">${String(9+Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}<small>${mn} min</small></span><span class="w">${esc(w)}${q?`<span class="q">${esc(q)}</span>`:''}</span></li>`}).join('')})()}</ol></section>`:''}
-    ${dls.length?`<section class="box" style="margin-top:14px"><h2>Downloads</h2><div class="dl">${dls.map(k=>{const [lab,f]=DL[k];const href=/^(http|files\/)/.test(f)?f:SITE+f;return `<a href="${href}" target="_blank" rel="noopener">${dlIcon}${esc(lab)}</a>`}).join('')}</div></section>`:''}
+    ${l.plan?`<details class="box plan"><summary class="plan-head"><h2>${esc(l.plan.title)}</h2><span>${l.plan.total} min · open the full plan ${chev}</span></summary><div class="plan-bar" aria-hidden="true">${l.plan.rows.map(([mn],i)=>`<i style="flex:${mn};background:${COLS[i%6]}"></i>`).join('')}</div><ol>${(()=>{let t=0;return l.plan.rows.map(([mn,w,q])=>{const s=t;t+=mn;return `<li><span class="t">${String(9+Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}<small>${mn} min</small></span><span class="w">${esc(w)}${q?`<span class="q">${esc(q)}</span>`:''}</span></li>`}).join('')})()}</ol></details>`:''}
+    ${dls.length?`<p class="mats-line"><b>Materials for this lesson</b>${dls.map(k=>{const [lab,f]=DL[k];const href=/^(http|files\/)/.test(f)?f:SITE+f;return `<a href="${href}" target="_blank" rel="noopener">${esc(lab.replace(/^Canvas: /,''))}</a>`}).join('<span aria-hidden="true">·</span>')}</p>`:''}
     <section class="box" style="margin-top:14px"><details class="notes"${l.video?'':' open'}><summary>${chev}Lesson notes</summary><div class="tx">${l.script.map(p=>`<p>${esc(p)}</p>`).join('')}</div></details></section>
     ${ask(l.title)}
     <div class="l-nav">
