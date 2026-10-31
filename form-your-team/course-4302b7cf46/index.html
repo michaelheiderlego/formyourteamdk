@@ -842,7 +842,7 @@ function renderLesson(l){
     ${l===m.lessons[0]?`<div class="mod-band">${ill?`<img src="${ill}" alt="">`:''}<p><strong>${esc(m.title)}</strong>${esc(m.intro)}</p></div>`:''}
     <h1 class="l-title">${esc(l.title)}</h1>
     <div class="l-meta"><span class="chip" style="background:${soft(m)};color:${dark(m)}">Lesson ${m.lessons.indexOf(l)+1} of ${m.lessons.length}</span><span>${l.dur||l.min+' min'}</span>${P.done[l.id]?'<span style="color:var(--d5);font-weight:650">✓ Done</span>':''}</div>
-    <div class="player">${media}</div>${l.video?`<p class="ai-note">${l.id==='0-1'?'Recorded by me. — Michael':'My script and my experience, narrated with an AI version of my own voice. — Michael'}</p>`:''}
+    <div class="player">${media}</div>${l.video?`<p class="ai-note">${l.id==='0-1'?'Recorded by me. — Michael':'Written by me. Voiced by AI. — Michael'}</p>`:''}
     ${!l.video&&l.audio?`<audio class="audio" controls preload="metadata" src="${esc(l.audio)}"></audio>`:''}
     ${(l.glance&&l.glance.length&&window.VIS)?`<section class="glance"><h2>At a glance</h2><div class="glance-row">${l.glance.filter(id=>window.VIS[id]).map(id=>`<figure class="glance-card" tabindex="0" role="button" aria-label="Enlarge drawing" style="background:${soft(m)}">${window.VIS[id](accent(m))}</figure>`).join('')}</div></section>`:''}
     <div class="l-grid">
