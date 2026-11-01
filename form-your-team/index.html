@@ -2664,6 +2664,12 @@ html.is-posters body:has(.illos) { background: transparent; }
 .course-sample-card figcaption span { font-size: 14.5px; color: var(--ink-2); line-height: 1.45; }
 @media (max-width: 860px) { .course-samples-grid { grid-template-columns: 1fr; } }
 .free-actions .hero-check { margin-top: 0; }
+@media (min-width: 720px) {
+  .free-actions { align-items: stretch; }
+  .free-actions .hero-check { min-height: 40px; padding: 0 16px 0 14px; }
+  .free-actions .hero-check-text { flex-direction: row; align-items: baseline; gap: 8px; white-space: nowrap; }
+  .free-actions .hero-check-text small { font-size: 15px; }
+}
 
 </style>
 
