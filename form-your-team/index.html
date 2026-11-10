@@ -2470,7 +2470,7 @@ html.is-posters body:has(.illos) { background: transparent; }
 .howto-n { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: #fff; font-size: 12.5px; font-weight: 700; flex: none; }
 .howto .link { font-weight: 600; color: var(--ink); }
 .madeby-strip { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.madeby-strip img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+.madeby-strip img { width: 64px; height: auto; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover; }
 .madeby-strip p { margin: 0; color: var(--ink-2); font-size: 15.5px; line-height: 1.5; }
 .madeby-strip strong { color: var(--ink); }
 .about-page { padding-bottom: 60px; }
