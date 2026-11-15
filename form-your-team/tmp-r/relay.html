@@ -1,0 +1,4 @@
+<!doctype html><meta charset="utf-8"><body>relay<script>
+(async()=>{const q=new URLSearchParams(location.search);const f=q.get('f');const tgt=window.opener||window.parent;
+try{const r=await fetch('/tmp-r/'+f);const b=await r.arrayBuffer();tgt.postMessage({relay:f,buf:b,type:r.headers.get('content-type')},'*',[b]);document.body.textContent='sent '+f+' '+b.byteLength;}catch(e){tgt.postMessage({relay:f,err:String(e)},'*');}})();
+</script>
